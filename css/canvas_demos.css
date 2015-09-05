@@ -1,0 +1,19 @@
+* {
+	box-sizing: border-box;
+}
+.container:after{
+	content: "";
+	display: "table";
+	clear: both;
+}
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.canvas {
+	border: 1px solid red;
+}
