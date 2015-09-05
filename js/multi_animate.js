@@ -16,6 +16,8 @@ function Shape(x, y, width, height){
 	this.y = y;
 	this.width = width;
 	this.height = height;
+	this.radius = Math.random() * 30;
+	this.angle = 0;
 }
 
 function setupShapes(){
@@ -23,7 +25,7 @@ function setupShapes(){
 	for( var i = 0; i < 10; i++ ){
 		var x = Math.random() * 250;
 		var y = Math.random() * 250;
-		var width = height = Math.random() * 50;
+		var width = height = Math.random() * 30;
 		shapes.push(new Shape(x, y, width, height));
 
 	}
@@ -58,8 +60,15 @@ function animate(){
 
 		for( var i = 0, len = shapes.length;  i < len; i++ ){
 			var shape = shapes[i];
-			shape.x += 1;
+			// shape.x += Math.random() * 4 - 2;
+			// shape.y += Math.random() * 4 - 2;
+			shape.x = shape.x + (shape.radius * Math.cos(shape.angle * (Math.PI/180)));
+			shape.y = shape.y + (shape.radius * Math.sin(shape.angle * (Math.PI/180)));
 			ctx.fillRect(shape.x, shape.y, shape.width, shape.height);
+			shape.angle += 5;
+			if( shape.angle > 360 ){
+				shape.angle = 0;
+			}
 		}
 		requestAnimationFrame(animate);
 	}
