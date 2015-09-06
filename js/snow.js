@@ -76,8 +76,28 @@
 				asteroid.x += asteroid.vx;
 				asteroid.y += asteroid.vy;
 
-				asteroid.vx += asteroid.ax;
-				asteroid.vy += asteroid.ay;
+				if( Math.abs(asteroid.vx) < 10 ){
+					asteroid.vx += asteroid.ax;	
+				}
+
+				if ( Math.abs(asteroid.vy) < 10 ){
+					asteroid.vy += asteroid.ay;	
+				}
+				
+
+				if( Math.abs(asteroid.vx) > 0.1 ){
+					asteroid.vx *= 0.9;
+				} else  {
+					asteroid.vx = 0;
+				}
+
+				if( Math.abs(asteroid.vy) > 0.1 ){
+					asteroid.vy *= 0.9;
+				} else  {
+					asteroid.vy = 0;
+				}
+
+				
 
 				if( asteroid.x - asteroid.radius < 0 ) {
 					asteroid.x = asteroid.radius;
